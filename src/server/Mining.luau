@@ -151,7 +151,8 @@ local function styleDrill(tool: Tool, tier: number)
 end
 
 local function giveDrill(player: Player)
-	local data = PlayerData.get(player)
+	-- Wait for the save to load so a returning player gets their real drill, not a starter one.
+	local data = PlayerData.waitForData(player)
 	if not data then
 		return
 	end
