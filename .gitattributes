@@ -1,0 +1,20 @@
+# Keep line endings consistent so Windows doesn't flag files as changed.
+# Text files are stored and checked out with LF (the ending stylua writes).
+* text=auto eol=lf
+
+# Luau source is always text/LF.
+*.luau text eol=lf
+
+# Roblox place/model files are binary; never try to merge or convert them.
+*.rbxl binary
+*.rbxm binary
+*.rbxlx binary
+*.rbxmx binary
+
+# Common binary assets.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.mp3 binary
+*.ogg binary
+*.fbx binary
