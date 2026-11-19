@@ -5,6 +5,7 @@ local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local Config = require(ReplicatedStorage.Shared.Config)
+local Effects = require(script.Parent.Effects)
 local Notify = require(script.Parent.Notify)
 local PlayerData = require(script.Parent.PlayerData)
 local World = require(script.Parent.World)
@@ -129,10 +130,13 @@ local function onDrillUsed(player: Player)
 	if health > 0 then
 		asteroid:SetAttribute("Health", health)
 		showDamage(asteroid, health / zone.asteroidHealth, zone.color)
+		Effects.hit(asteroid.Position, zone.color)
 		return
 	end
 
 	-- Broken! Remove it, schedule a replacement, and pay out ore (up to the free space).
+	-- Grab position and size before destroying, since the shatter effect needs them.
+	Effects.shatter(asteroid.Position, zone.color, asteroid.Size.X)
 	asteroid:Destroy()
 	task.delay(zone.respawnTime, spawnAsteroid, zoneIndex)
 

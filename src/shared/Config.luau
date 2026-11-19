@@ -6,6 +6,12 @@ local Config = {}
 Config.MineCooldown = 0.35
 Config.MineRange = 12
 
+-- Sound effects (Roblox free "Pro Sound Effects" audio). Swap these IDs to change the feel.
+Config.Sounds = {
+	hit = "rbxassetid://9118598279", -- short rock impact, played on every hit
+	shatter = "rbxassetid://9125869504", -- rock cracking apart, played when an asteroid breaks
+}
+
 -- Drills: each tier hits harder. Tier 1 is free; the rest are bought in order.
 Config.Drills = {
 	{ name = "Rusty Drill", power = 1, cost = 0, color = Color3.fromRGB(150, 110, 80) },
